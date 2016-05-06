@@ -25,7 +25,7 @@
 					console.log(data[i]);
 					var base4 = data[i].toString(4);
 					if(base4/1000<1){
-						base4=String(base4) + "0";
+						base4="0" + String(base4);
 					}
 					console.log(base4);
 					for(var j=0; j<4;j++){
