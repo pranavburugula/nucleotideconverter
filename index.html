@@ -4,13 +4,23 @@
 		<title>Base 4 nucleotide ASCII translator</title>
 	</head>
 	<body>
-		<input type="text" name="textToConvert" id="input" />
-		<input type="button" name="convert" id="convert" value="translate" onclick='asciiToNucleotide(output);'>
-		<input type="text" id="output">
+		Text to nucleotide:
+		<br>
+		<input type="text" id="inputText" />
+		<input type="button" name="convertText" id="convert" value="encode" onclick='asciiToNucleotide(outputNuc);'>
+		<input type="text" id="outputNuc">
+		<br>
+		<br>
+		Nucleotide to text:
+		<br>
+		<input type="text" id="inputNuc">
+		<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='nucleotideToAscii(outputText);'>
+		<input type="text" id="outputText">
+		
 
 		<script>
 			function asciiToNucleotide(output) {
-				var inputText = document.getElementById("input").value;
+				var inputText = document.getElementById("inputText").value;
 				var chars = [];
 				console.log(inputText);
 				for (var i = 0; i < inputText.length; i++) {
@@ -52,8 +62,52 @@
 				output.value = base4string;
 			}
 			function nucleotideToAscii(output){
-				var inputText = document.getElementById("input").value;
-				
+				var inputText = document.getElementById("inputNuc").value;
+				console.log("Input:" + inputText);
+				var base4Nucleotide = [];
+				console.log("inputTextLength:"+inputText.length);
+				for(var i=0;i<inputText.length;i++){
+						base4Nucleotide[i]=inputText.charAt(i);
+					
+				}
+				console.log("base4Nucleotide:"+base4Nucleotide);
+				var base4 = [];
+				var tmp=[];
+				for(var k=0;k<base4Nucleotide.length;k++){
+					tmp.length=0;
+					for(var l=0;l<4;l++){
+						switch(base4Nucleotide[k].charAt((4*k)+l)){
+							case "A":
+								tmp[l]="0";
+								break;
+							case "T":
+								tmp[l]="1";
+								break;
+							case "G":
+								tmp[l]="2";
+								break;
+							case "C":
+								tmp[l]="3";
+								break;
+							default:
+								break;
+						}
+					console.log("tmp" + l + ":" + tmp);
+					}
+					base4[k]=tmp[0]+tmp[1]+tmp[2]+tmp[3];
+				}
+				console.log("base4:"+base4);
+				var chars = [];
+				for(var n=0;n<base4.length;n++){
+					chars[n]=parseInt(base4[n], 10);
+				}
+				console.log("chars:"+chars);
+				var finalString;
+				for(var m=0;m<chars.length;m++){
+					finalString = finalString.concat(fromCharCode(chars[m]));
+				}
+				console.log("finalString:"+finalString);
+				output.value = finalString;
 			}
 		</script>
 	</body>
