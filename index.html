@@ -7,29 +7,30 @@
 		<input type="text" name="textToConvert" id="input" />
 		<input type="button" name="convert" id="convert" value="translate" onclick='asciiToNucleotide(output);'>
 		<input type="text" id="output">
-		
+
 		<script>
-			function asciiToNucleotide(output){
+			function asciiToNucleotide(output) {
 				var inputText = document.getElementById("input").value;
 				var chars = [];
 				console.log(inputText);
-				for(var i=0;i<inputText.length;i++){
+				for (var i = 0; i < inputText.length; i++) {
 					chars[i] = inputText.charCodeAt(i);
-					
+
 				}
 				console.log(chars[0]);
 				var data = [];
 				var base4string = "";
-				for(var i=0;i<chars.length;i++){
+				for (var i = 0; i < chars.length; i++) {
 					data[i] = chars[i] - 32;
 					console.log(data[i]);
 					var base4 = data[i].toString(4);
-					if(base4/1000<1){
-						String(base4)="0" + String(base4);
+					if (base4 / 1000 < 1) {
+						base4 = String(base4);
+						base4 = "0".concat(base4);
 					}
 					console.log(base4);
-					for(var j=0; j<4;j++){
-						switch(String(base4).charAt(j)){
+					for (var j = 0; j < 4; j++) {
+						switch(String(base4).charAt(j)) {
 							case "0":
 								base4string = base4string.concat("A");
 								break;
