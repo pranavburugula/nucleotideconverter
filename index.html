@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Base 4 nucleotie ASCII translator</title>
+	</head>
+	<body>
+		<input type="text" name="textToConvert" id="input" />
+		<input type="button" name="convert" id="convert" value="translate" onclick='asciiToNucleotide(output);'>
+		<input type="text" id="output">
+		
+		<script>
+			function asciiToNucleotide(output){
+				var inputText = document.getElementById("input").value;
+				var chars = [];
+				console.log(inputText);
+				for(var i=0;i<inputText.length;i++){
+					chars[i] = inputText.charCodeAt(i);
+					
+				}
+				console.log(chars[0]);
+				var data = [];
+				var base4string = "";
+				for(var i=0;i<chars.length;i++){
+					data[i] = chars[i] - 32;
+					console.log(data[i]);
+					var base4 = data[i].toString(4);
+					console.log(base4);
+					for(var j=0; j<4;j++){
+						switch(String(base4).charAt(j)){
+							case "0":
+								base4string = base4string.concat("A");
+								break;
+							case "1":
+								base4string = base4string.concat("T");
+								break;
+							case "2":
+								base4string = base4string.concat("G");
+								break;
+							case "3":
+								base4string = base4string.concat("C");
+								break;
+							default:
+								break;
+						}
+						console.log(base4string);
+					}
+				}
+				output.value = base4string;
+			}
+		</script>
+	</body>
+</html>
