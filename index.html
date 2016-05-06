@@ -21,7 +21,7 @@
 				var data = [];
 				var base4string = "";
 				for (var i = 0; i < chars.length; i++) {
-					data[i] = chars[i] - 32;
+					data[i] = chars[i];
 					console.log(data[i]);
 					var base4 = data[i].toString(4);
 					if (base4 / 1000 < 1) {
@@ -50,6 +50,10 @@
 					}
 				}
 				output.value = base4string;
+			}
+			function nucleotideToAscii(output){
+				var inputText = document.getElementById("input").value;
+				
 			}
 		</script>
 	</body>
