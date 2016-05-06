@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Base 4 nucleotie ASCII translator</title>
+		<title>Base 4 nucleotide ASCII translator</title>
 	</head>
 	<body>
 		<input type="text" name="textToConvert" id="input" />
@@ -24,6 +24,9 @@
 					data[i] = chars[i] - 32;
 					console.log(data[i]);
 					var base4 = data[i].toString(4);
+					if(base4/1000<1){
+						base4=String(base4) + "0";
+					}
 					console.log(base4);
 					for(var j=0; j<4;j++){
 						switch(String(base4).charAt(j)){
