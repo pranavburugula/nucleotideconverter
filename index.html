@@ -24,14 +24,16 @@
 				for (i in inputText) {
 					base4string += ("AAAA" + inputText.charCodeAt(i).toString(4).replace(/0/g, "A").replace(/1/g, "T").replace(/2/g, "G").replace(/3/g, "C")).slice(-4);
 				}
+				output.value = '';
 				output.value = base4string;
 			}
 
 			function nucleotideToAscii(output) {
-				var inputNuc = document.getElementById("inputNuc").value.replace(/A/g,0).replace(/T/g,1).replace(/G/g,2).replace(/C/g,3);
+				output.value = '';
+				var inputNuc = document.getElementById("inputNuc").value.replace(/A/g, 0).replace(/T/g, 1).replace(/G/g, 2).replace(/C/g, 3);
 				for (i in inputNuc) {
 					if (!(i % 4)) {
-						output.value+=String.fromCharCode(parseInt(inputNuc.substr(i,4),4));
+						output.value += String.fromCharCode(parseInt(inputNuc.substr(i, 4), 4));
 					}
 				}
 			}
