@@ -16,98 +16,24 @@
 		<input type="text" id="inputNuc">
 		<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='nucleotideToAscii(outputText);'>
 		<input type="text" id="outputText">
-		
 
 		<script>
 			function asciiToNucleotide(output) {
 				var inputText = document.getElementById("inputText").value;
-				var chars = [];
-				console.log(inputText);
-				for (var i = 0; i < inputText.length; i++) {
-					chars[i] = inputText.charCodeAt(i);
-
-				}
-				console.log(chars[0]);
-				var data = [];
-				var base4string = "";
-				for (var i = 0; i < chars.length; i++) {
-					data[i] = chars[i];
-					console.log(data[i]);
-					var base4 = data[i].toString(4);
-					if (base4 / 1000 < 1) {
-						base4 = String(base4);
-						base4 = "0".concat(base4);
-					}
-					console.log(base4);
-					for (var j = 0; j < 4; j++) {
-						switch(String(base4).charAt(j)) {
-							case "0":
-								base4string = base4string.concat("A");
-								break;
-							case "1":
-								base4string = base4string.concat("T");
-								break;
-							case "2":
-								base4string = base4string.concat("G");
-								break;
-							case "3":
-								base4string = base4string.concat("C");
-								break;
-							default:
-								break;
-						}
-						console.log(base4string);
-					}
+				var base4string = '';
+				for (i in inputText) {
+					base4string += ("AAAA" + inputText.charCodeAt(i).toString(4).replace(/0/g, "A").replace(/1/g, "T").replace(/2/g, "G").replace(/3/g, "C")).slice(-4);
 				}
 				output.value = base4string;
 			}
-			function nucleotideToAscii(output){
-				var inputText = document.getElementById("inputNuc").value;
-				console.log("Input:" + inputText);
-				var base4Nucleotide = [];
-				console.log("inputTextLength:"+inputText.length);
-				for(var i=0;i<inputText.length;i++){
-						base4Nucleotide[i]=inputText.charAt(i);
-					
-				}
-				console.log("base4Nucleotide:"+base4Nucleotide);
-				var base4 = [];
-				var tmp=[];
-				for(var k=0;k<base4Nucleotide.length;k++){
-					tmp.length=0;
-					for(var l=0;l<4;l++){
-						switch(base4Nucleotide[k].charAt((4*k)+l)){
-							case "A":
-								tmp[l]="0";
-								break;
-							case "T":
-								tmp[l]="1";
-								break;
-							case "G":
-								tmp[l]="2";
-								break;
-							case "C":
-								tmp[l]="3";
-								break;
-							default:
-								break;
-						}
-					console.log("tmp" + l + ":" + tmp);
+
+			function nucleotideToAscii(output) {
+				var inputNuc = document.getElementById("inputNuc").value.replace(/A/g,0).replace(/T/g,1).replace(/G/g,2).replace(/C/g,3);
+				for (i in inputNuc) {
+					if (!(i % 4)) {
+						output.value+=String.fromCharCode(parseInt(inputNuc.substr(i,4),4));
 					}
-					base4[k]=tmp[0]+tmp[1]+tmp[2]+tmp[3];
 				}
-				console.log("base4:"+base4);
-				var chars = [];
-				for(var n=0;n<base4.length;n++){
-					chars[n]=parseInt(base4[n], 10);
-				}
-				console.log("chars:"+chars);
-				var finalString;
-				for(var m=0;m<chars.length;m++){
-					finalString = finalString.concat(fromCharCode(chars[m]));
-				}
-				console.log("finalString:"+finalString);
-				output.value = finalString;
 			}
 		</script>
 	</body>
