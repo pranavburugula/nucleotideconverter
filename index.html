@@ -24,7 +24,6 @@
 				for (i in inputText) {
 					base4string += ("AAAA" + inputText.charCodeAt(i).toString(4).replace(/0/g, "A").replace(/1/g, "T").replace(/2/g, "G").replace(/3/g, "C")).slice(-4);
 				}
-				output.value = '';
 				output.value = base4string;
 			}
 
