@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Rot13 translator</title>
+    </head>
+    <body>
+        <input id="inputText" type="text">
+        <input type="button" onclick="encode(outputrot13)" value="encode">
+        <input type="text" id="outputrot13">
+        
+        <br>
+        
+        <input id="inputrot13" type="text">
+        <input type="button" onclick="decode(outputtext)" value="decode">
+        <input type="text" id="outputtext">
+        <script>
+            function encode(output){
+                var input = document.getElementById("inputText").value;
+                output.value="";
+                for(i in input){
+                    output.value+=String.fromCharCode(input.charCodeAt(i)+13);
+                }
+            }
+            
+            function decode(output){
+                var input = document.getElementById("inputrot13").value;
+                output.value="";
+                for(i in input){
+                    output.value+=String.fromCharCode(input.charCodeAt(i)-13);
+                }
+            }
+        </script>
+    </body>
+</html>
