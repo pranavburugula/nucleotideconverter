@@ -17,7 +17,7 @@
                 var input = document.getElementById("inputText").value;
                 output.value="";
                 for(i in input){
-                    output.value+=String.fromCharCode(input.charCodeAt(i)+13);
+                    output.value+=String.fromCharCode(input.charCodeAt(i)-32);
                 }
             }
             
@@ -25,7 +25,7 @@
                 var input = document.getElementById("inputrot13").value;
                 output.value="";
                 for(i in input){
-                    output.value+=String.fromCharCode(input.charCodeAt(i)-13);
+                    output.value+=String.fromCharCode(input.charCodeAt(i)+32);
                 }
             }
         </script>
