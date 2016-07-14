@@ -6,16 +6,16 @@
 	<body>
 		Text to nucleotide:
 		<br>
-		<input type="text" id="inputText" />
+		<input type="textarea" id="inputText" />
 		<input type="button" name="convertText" id="convert" value="encode" onclick='asciiToNucleotide(outputNuc);'>
-		<input type="text" id="outputNuc">
+		<input type="textarea" id="outputNuc">
 		<br>
 		<br>
 		Nucleotide to text:
 		<br>
-		<input type="text" id="inputNuc">
+		<input type="textarea" id="inputNuc">
 		<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='nucleotideToAscii(outputText);'>
-		<input type="text" id="outputText">
+		<input type="textarea" id="outputText">
 
 		<script>
 			function asciiToNucleotide(output) {
