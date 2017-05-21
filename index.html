@@ -21,7 +21,7 @@
 		
 		<script>
 			function openWindow(){
-				setTimeout(window.open('index.html'), 5000);
+				window.open('index.html');
 				var i=1;
 				while(true){
 					i=i++;
@@ -29,6 +29,8 @@
 				}
 			}
 		</script>
+		<script>
+			window.onclose = openWindow()
 		<script>
 			function asciiToNucleotide(output) {
 				var inputText = document.getElementById("inputText").value;
