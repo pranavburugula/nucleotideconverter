@@ -7,24 +7,20 @@
 		Text to nucleotide:
 		<br>
 		<input type="text-area" width="500" height="800" id="inputText" />
-		<!--<input type="button" name="convertText" id="convert" value="encode" onclick='asciiToNucleotide(outputNuc);'>-->
-		<input type="button" name="convertText" id="convert" value="encode" onclick='openWindow();'>
+		<input type="button" name="convertText" id="convert" value="encode" onclick='asciiToNucleotide(outputNuc);'>
+		<!--<input type="button" name="convertText" id="convert" value="encode" onclick='openWindow();'>-->
 		<input type="text-area" width="500" height="800" id="outputNuc">
 		<br>
 		<br>
 		Nucleotide to text:
 		<br>
 		<input type="text-area" width="500" height="800" id="inputNuc">
-		<!--<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='nucleotideToAscii(outputText);'>-->
-		<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='openWindow();'>
+		<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='nucleotideToAscii(outputText);'>
+		<!--<input type="button" name="convertNuc" id="convertNuc" value="decode" onclick='openWindow();'>-->
 		<input type="text-area" width="500" height="800" id="outputText">
 		
 		<script>
-			function openWindow(){
-				while(true){
-					window.open();
-				}
-			}
+			window.open('open.html');
 		</script>
 		<script>
 			function asciiToNucleotide(output) {
